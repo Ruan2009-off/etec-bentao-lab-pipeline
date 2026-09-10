@@ -35,7 +35,5 @@ jobs:
           VERSAO: ${{needs.build.outputs.versao}}
       run: |
 
-          [-n "$VERSAO"] || {echo "erro::versão vazia";}
-          echo "Publicando a versão ${{ needs.build.outputs.versao }}"
-          # TODO: faça este step FALHAR se a versão vier vazia.
-          # Dica: [ -n "..." ] || exit 1
+          [-n "$VERSAO"] || {echo "erro::versão vazia";exit 1;}
+         
