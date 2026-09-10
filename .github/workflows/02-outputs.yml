@@ -33,7 +33,6 @@ jobs:
       - name: Usar em outro job (via needs)
         env: 
           VERSAO: ${{needs.build.outputs.versao}}
-      run: |
-
+        run: |
           [-n "$VERSAO"] || {echo "erro::versão vazia";exit 1;}
          
