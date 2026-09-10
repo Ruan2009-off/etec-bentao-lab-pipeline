@@ -19,7 +19,7 @@ jobs:
       - name: Calcular versão
         id: ver
         run: |
-          
+          VERSAO =" H3264"
           echo "versao=$VERSAO" >> "$GITHUB_OUTPUT"     # output do step
           echo "APP_VERSION=$VERSAO" >> "$GITHUB_ENV"   # variável para os próximos steps
 
@@ -31,7 +31,11 @@ jobs:
     needs: build
     steps:
       - name: Usar em outro job (via needs)
-        run: |
+        env: 
+          VERSAO: ${{needs.build.outputs.versao}}
+      run: |
+
+          [-n "$VERSAO"] || {echo "erro::versão vazia";}
           echo "Publicando a versão ${{ needs.build.outputs.versao }}"
           # TODO: faça este step FALHAR se a versão vier vazia.
           # Dica: [ -n "..." ] || exit 1
