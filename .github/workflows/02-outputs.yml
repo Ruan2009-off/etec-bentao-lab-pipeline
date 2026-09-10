@@ -34,5 +34,6 @@ jobs:
         env: 
           VERSAO: ${{needs.build.outputs.versao}}
         run: |
-          [-n "$VERSAO"] || {echo "erro::versão vazia";exit 1;}
+          [-n "$VERSAO"] || {echo "erro::versão vazia";exit 1; }
+          echo: "Publicando a versão"
          
