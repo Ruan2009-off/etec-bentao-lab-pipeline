@@ -31,7 +31,7 @@ jobs:
           echo "commit    = $GITHUB_SHA"
           echo "ator      = $GITHUB_ACTOR"
 
-          - name: Variável do repositório + contexto github
+      - name: Variável do repositório + contexto github
         run: |
           echo "AMBIENTE  = $AMBIENTE"
 
